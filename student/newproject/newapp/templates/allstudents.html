@@ -1,0 +1,32 @@
+{% load  django_bootstrap5 %}
+    <h1>Students</h1>
+    <head><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"></head>
+    
+    <table class="table table-stripped">
+        <th>
+            <tr>
+                <td>name</td>
+                <td>regno</td>
+                <td>year</td>
+                <td>dept</td>
+                <td>marks</td>
+                
+            </tr>
+        </th>
+        
+        <tbody>
+            {% for i in all_student %}
+            <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.regno}}</td>
+                <td>{{i.year}}</td>
+                <td>{{i.dept}}</td>
+                <td>{{i.marks}}</td>
+                <td><a href="{% url 'update_student' i.id %}"><button type="submit">UPDATE</button></a></td>
+                <td> <a href="{% url 'delete_student' i.id %}"><button type="submit">DELETE</button></td></a>
+            </tr>
+            {% endfor %}
+        </tbody>
+        
+    </table>
+    <a href="{% url 'add_student' %}"><button type="submit">ADD</button></a>
